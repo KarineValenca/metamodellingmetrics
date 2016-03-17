@@ -1,0 +1,4 @@
+class ChangeTypeForStartDate < ActiveRecord::Migration
+  def change
+  end
+end
