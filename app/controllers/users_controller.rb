@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  has_and_belongs_to_many :projects
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
