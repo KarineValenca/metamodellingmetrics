@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-  has_and_belongs_to_many :users
   
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
