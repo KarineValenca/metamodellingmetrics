@@ -1,0 +1,4 @@
+class RemoveCompanyFromUsers < ActiveRecord::Migration
+  def change
+  end
+end
