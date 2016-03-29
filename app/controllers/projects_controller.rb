@@ -15,7 +15,12 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
-    @project = Project.new
+    if(current_user)
+      @project = Project.new
+    else
+      flash[:notice] = "Voce precisa logar para criar um projeto!"
+      redirect_to root_path
+    end
   end
 
   # GET /projects/1/edit
@@ -70,6 +75,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name_project, :start_date_project, :user_ids)
+      params.require(:project).permit(:name_project, :start_date_project, :user_ids, :description)
     end
 end
