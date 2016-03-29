@@ -10,6 +10,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if(current_user == User.find(params[:id]))
+      #ok
+    else
+      flash[:notice] = "Essa conta não é sua!"
+      redirect_to root_path
+    end
   end
 
   # GET /users/new

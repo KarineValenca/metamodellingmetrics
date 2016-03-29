@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    match '/users/:id'
+  end
   resources :projects
   resources :users
-  #resources :users
 
   get 'projects/new'
   # The priority is based upon order of creation: first created -> highest priority.
