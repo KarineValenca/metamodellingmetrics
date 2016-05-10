@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  resources :goals
+
   devise_for :users do
     match '/users/:id'
   end
-  resources :projects
+  resources :projects do
+      resources :goals
+  end
+
+  resources :goals
   resources :users
 
   get 'projects/new'
