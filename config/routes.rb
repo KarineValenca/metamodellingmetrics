@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :companies
   resources :questions
   devise_for :users do
     match '/users/:id'
