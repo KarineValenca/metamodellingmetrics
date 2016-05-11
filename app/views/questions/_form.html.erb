@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :goal_id, :value => @goal.id %>
+
   <div class="field">
     <%= f.label :question_name %><br>
     <%= f.text_field :question_name %>
