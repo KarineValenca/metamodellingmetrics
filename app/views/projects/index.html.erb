@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Projects</h1>
+<h1>Seus projetos</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name project</th>
-      <th>Start date project</th>
+      <th>Nome do projeto</th>
+      <th>Descrição do projeto</th>
+      <th>Data de início</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,10 +16,11 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.name_project %></td>
+        <td><%= project.description %></td>
         <td><%= project.start_date_project %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalhes', project %></td>
+        <td><%= link_to 'Editar', edit_project_path(project) %></td>
+        <td><%= link_to 'Excluir', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'Novo Projeto', new_project_path %>
