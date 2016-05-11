@@ -16,7 +16,6 @@ class GoalsController < ApplicationController
   def new
     @goal = Goal.new
     @project = Project.find(params[:project])
-    
   end
 
   # GET /goals/1/edit
@@ -27,9 +26,6 @@ class GoalsController < ApplicationController
   # POST /goals.json
   def create
     @goal = Goal.new(goal_params)
-   
-    #@goal.project_id = :project_id
-     #puts "AAAAA #{@goal.project_id}"
     respond_to do |format|
       if @goal.save
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
