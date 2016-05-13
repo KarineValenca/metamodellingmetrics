@@ -4,7 +4,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @goal = Goal.find(params[:goal])
+    @questions = @goal.questions
   end
 
   # GET /questions/1
