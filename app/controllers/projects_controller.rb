@@ -1,16 +1,22 @@
 class ProjectsController < ApplicationController
   
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  #before_filter :validate_user, only: [:show]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = current_user.projects
+      @projects = current_user.projects
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+    #@user = current_user
+    #@project.user = User.find()
+    #puts "AAAAA #{Project.find(params[:id]).users}"
+    #redirect_to root_path unless current_user.id.to_s == Project.find(params[:id]).users
+    #flash[:notice] = "Você não tem acesso à essa página"
   end
 
   # GET /projects/new
@@ -77,4 +83,9 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:name_project, :start_date_project, :user_ids, :description)
     end
+
+   # def validate_user
+      #redirect_to root_path unless current_user.id.to_s == @project.user
+     # flash[:notice] = "Você não tem acesso à essa página"
+    #end
 end
