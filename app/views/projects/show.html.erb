@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name project:</strong>
   <%= @project.name_project %>
@@ -16,5 +15,6 @@
 </p>
 
 <%= link_to 'Novo objetivo de medição', new_goal_path(:project => @project.id) %>
+<%= link_to 'Ver os objetivos desse projeto', goals_path(:project => @project.id) %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

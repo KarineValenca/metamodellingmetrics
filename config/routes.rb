@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :goals do
     resources :questions
   end
+  
   resources :users
 
   get 'projects/new'
