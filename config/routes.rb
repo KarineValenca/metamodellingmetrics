@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :metrics
   resources :companies
   resources :questions
+  
   devise_for :users do
     match '/users/:id'
   end
@@ -10,6 +12,14 @@ Rails.application.routes.draw do
   end
 
   resources :goals do
+    resources :questions
+  end
+  
+  resources :questions do 
+    resources :metrics
+  end
+
+  resources :metrics do
     resources :questions
   end
   

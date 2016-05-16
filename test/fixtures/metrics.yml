@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  metric_name: MyString
+  description_metric: MyText
+  calculus_date: 2016-05-14
+
+two:
+  metric_name: MyString
+  description_metric: MyText
+  calculus_date: 2016-05-14

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Metric name:</strong>
+  <%= @metric.metric_name %>
+</p>
+
+<p>
+  <strong>Description metric:</strong>
+  <%= @metric.description_metric %>
+</p>
+
+<p>
+  <strong>Calculus date:</strong>
+  <%= @metric.calculus_date %>
+</p>
+
+<%= link_to 'Edit', edit_metric_path(@metric) %> |
+<%= link_to 'Back', metrics_path %>
