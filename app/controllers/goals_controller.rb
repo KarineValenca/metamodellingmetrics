@@ -16,7 +16,7 @@ class GoalsController < ApplicationController
   # GET /goals/new
   def new
     @goal = Goal.new
-    @project = Project.find(params[:project])
+    @project = Project.find(params[:project_id])
   end
 
   # GET /goals/1/edit

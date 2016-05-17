@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_measure: MyString
+  description_measure: MyText
+  date_measure: 2016-05-17
+  value_measure: 
+
+two:
+  name_measure: MyString
+  description_measure: MyText
+  date_measure: 2016-05-17
+  value_measure: 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514131839) do
+ActiveRecord::Schema.define(version: 20160517122053) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name_company",        limit: 255
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20160514131839) do
   end
 
   add_index "goals", ["project_id"], name: "index_goals_on_project_id", using: :btree
+
+  create_table "measures", force: :cascade do |t|
+    t.string   "name_measure",        limit: 255
+    t.text     "description_measure", limit: 65535
+    t.date     "date_measure"
+    t.float    "value_measure",       limit: 24
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
 
   create_table "metrics", force: :cascade do |t|
     t.string   "metric_name",        limit: 255

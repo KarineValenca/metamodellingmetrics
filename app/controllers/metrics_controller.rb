@@ -4,7 +4,8 @@ class MetricsController < ApplicationController
   # GET /metrics
   # GET /metrics.json
   def index
-    @metrics = Metric.all
+    @question = Question.find(params[:question_ids])
+    @metrics = @question.metrics
   end
 
   # GET /metrics/1

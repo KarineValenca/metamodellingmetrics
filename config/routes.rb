@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :measures
   resources :metrics
   resources :companies
   resources :questions

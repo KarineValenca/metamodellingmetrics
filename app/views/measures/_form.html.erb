@@ -1,0 +1,33 @@
+<%= form_for(@measure) do |f| %>
+  <% if @measure.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@measure.errors.count, "error") %> prohibited this measure from being saved:</h2>
+
+      <ul>
+      <% @measure.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name_measure %><br>
+    <%= f.text_field :name_measure %>
+  </div>
+  <div class="field">
+    <%= f.label :description_measure %><br>
+    <%= f.text_area :description_measure %>
+  </div>
+  <div class="field">
+    <%= f.label :date_measure %><br>
+    <%= f.date_select :date_measure %>
+  </div>
+  <div class="field">
+    <%= f.label :value_measure %><br>
+    <%= f.text_field :value_measure %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
