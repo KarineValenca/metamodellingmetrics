@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listando Objetivos</h1>
 
+<h1>Listando Objetivos</h1>
 <table>
   <thead>
     <tr>
@@ -14,10 +14,11 @@
   <tbody>
     <% @goals.each do |goal| %>
       <tr>
+
         <td><%= goal.name %></td>
         <td><%= goal.description %></td>
         <td><%= link_to 'Detalhes', goal %></td>
-        <td><%= link_to 'Editar', edit_goal_path(goal) %></td>
+        <td><%= link_to 'Editar', edit_project_goal_path(:id => goal.id, :project_id => @project.id) %></td>
         <td><%= link_to 'Excluir', goal, method: :delete, data: { confirm: 'Você tem certeza' } %></td>
       </tr>
     <% end %>

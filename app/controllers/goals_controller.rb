@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @project = Project.find(params[:project])
+    @project = Project.find(params[:project_id])
     @goals = @project.goals
   end
 
@@ -21,6 +21,7 @@ class GoalsController < ApplicationController
 
   # GET /goals/1/edit
   def edit
+    @project = Project.find(params[:project_id])
   end
 
   # POST /goals

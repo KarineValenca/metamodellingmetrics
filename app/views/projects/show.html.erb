@@ -15,6 +15,6 @@
 </p>
 
 <%= link_to 'Novo objetivo de medição', new_goal_path(:project => @project.id) %>
-<%= link_to 'Ver os objetivos desse projeto', goals_path(:project => @project.id) %>
+<%= link_to 'Ver os objetivos desse projeto', goals_path(:project_id => @project.id) %>
 <%= link_to 'Editar', edit_project_path(@project) %> |
 <%= link_to 'Voltar', projects_path %>
