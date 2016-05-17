@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name number set:</strong>
+  <%= @number_set.name_number_set %>
+</p>
+
+<p>
+  <strong>Description number set:</strong>
+  <%= @number_set.description_number_set %>
+</p>
+
+<%= link_to 'Edit', edit_number_set_path(@number_set) %> |
+<%= link_to 'Back', number_sets_path %>

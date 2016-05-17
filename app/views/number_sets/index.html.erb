@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Number Sets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name number set</th>
+      <th>Description number set</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @number_sets.each do |number_set| %>
+      <tr>
+        <td><%= number_set.name_number_set %></td>
+        <td><%= number_set.description_number_set %></td>
+        <td><%= link_to 'Show', number_set %></td>
+        <td><%= link_to 'Edit', edit_number_set_path(number_set) %></td>
+        <td><%= link_to 'Destroy', number_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Number set', new_number_set_path %>

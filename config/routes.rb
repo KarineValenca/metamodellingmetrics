@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :scales
+  resources :number_sets
   resources :measures
   resources :metrics
   resources :companies

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517122053) do
+ActiveRecord::Schema.define(version: 20160517141422) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name_company",        limit: 255
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 20160517122053) do
 
   add_index "metrics_questions", ["metric_id", "question_id"], name: "index_metrics_questions_on_metric_id_and_question_id", using: :btree
 
+  create_table "number_sets", force: :cascade do |t|
+    t.string   "name_number_set",        limit: 255
+    t.text     "description_number_set", limit: 65535
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name_project",       limit: 255
     t.date     "start_date_project"
@@ -78,6 +85,18 @@ ActiveRecord::Schema.define(version: 20160517122053) do
   end
 
   add_index "questions", ["goal_id"], name: "index_questions_on_goal_id", using: :btree
+
+  create_table "scales", force: :cascade do |t|
+    t.string   "name_scale",        limit: 255
+    t.text     "description_scale", limit: 65535
+    t.float    "min_number",        limit: 24
+    t.float    "max_number",        limit: 24
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "number_set_id",     limit: 4
+  end
+
+  add_index "scales", ["number_set_id"], name: "index_scales_on_number_set_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",             limit: 255
@@ -104,5 +123,6 @@ ActiveRecord::Schema.define(version: 20160517122053) do
 
   add_foreign_key "goals", "projects"
   add_foreign_key "questions", "goals"
+  add_foreign_key "scales", "number_sets"
   add_foreign_key "users", "companies"
 end
