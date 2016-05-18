@@ -21,8 +21,14 @@
 </p>
 
 <p>
-  <strong>Conjunto numérico</strong>
+  <strong>Conjunto numérico:</strong>
   <%= @scale.number_set.name_number_set %>
 </p>
+
+<p>
+  <strong>Tipo de escala:</strong>
+  <%= @scale.type_of_scale.name_type_scale %>
+</p>
+
 <%= link_to 'Edit', edit_scale_path(@scale) %> |
 <%= link_to 'Back', scales_path %>

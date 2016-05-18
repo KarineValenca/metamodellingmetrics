@@ -70,6 +70,6 @@ class ScalesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def scale_params
       params.require(:scale).permit(:name_scale, :description_scale, :min_number, :max_number,
-        :number_set_id)
+        :number_set_id, :type_of_scale_id)
     end
 end

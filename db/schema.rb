@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517141422) do
+ActiveRecord::Schema.define(version: 20160518195707) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name_company",        limit: 255
@@ -94,9 +94,18 @@ ActiveRecord::Schema.define(version: 20160517141422) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "number_set_id",     limit: 4
+    t.integer  "type_of_scale_id",  limit: 4
   end
 
   add_index "scales", ["number_set_id"], name: "index_scales_on_number_set_id", using: :btree
+  add_index "scales", ["type_of_scale_id"], name: "index_scales_on_type_of_scale_id", using: :btree
+
+  create_table "type_of_scales", force: :cascade do |t|
+    t.string   "name_type_scale",        limit: 255
+    t.text     "description_type_scale", limit: 65535
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",             limit: 255
@@ -124,5 +133,6 @@ ActiveRecord::Schema.define(version: 20160517141422) do
   add_foreign_key "goals", "projects"
   add_foreign_key "questions", "goals"
   add_foreign_key "scales", "number_sets"
+  add_foreign_key "scales", "type_of_scales"
   add_foreign_key "users", "companies"
 end

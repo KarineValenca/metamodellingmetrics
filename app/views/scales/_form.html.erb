@@ -28,8 +28,14 @@
     <%= f.text_field :max_number %>
   </div>
   <div class="field">
+    <%= f.label "Conjunto numérico"%><br>
     <%= f.select :number_set_id, NumberSet.all.collect {|number_set| [number_set.name_number_set, number_set.id]} %>
   </div>
+  <div class="field">
+    <%= f.label "Tipo de Escala"%><br>
+    <%= f.select :type_of_scale_id, TypeOfScale.all.collect {|type_of_scale| [type_of_scale.name_type_scale, type_of_scale.id]} %>
+  </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
