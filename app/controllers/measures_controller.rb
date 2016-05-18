@@ -69,6 +69,7 @@ class MeasuresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def measure_params
-      params.require(:measure).permit(:name_measure, :description_measure, :date_measure, :value_measure)
+      params.require(:measure).permit(:name_measure, :description_measure, :date_measure, 
+        :value_measure, :scale_id, :unit_of_measurement_id)
     end
 end

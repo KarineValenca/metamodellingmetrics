@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518195707) do
+ActiveRecord::Schema.define(version: 20160518201948) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name_company",        limit: 255
@@ -31,13 +31,18 @@ ActiveRecord::Schema.define(version: 20160518195707) do
   add_index "goals", ["project_id"], name: "index_goals_on_project_id", using: :btree
 
   create_table "measures", force: :cascade do |t|
-    t.string   "name_measure",        limit: 255
-    t.text     "description_measure", limit: 65535
+    t.string   "name_measure",           limit: 255
+    t.text     "description_measure",    limit: 65535
     t.date     "date_measure"
-    t.float    "value_measure",       limit: 24
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.float    "value_measure",          limit: 24
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "scale_id",               limit: 4
+    t.integer  "unit_of_measurement_id", limit: 4
   end
+
+  add_index "measures", ["scale_id"], name: "index_measures_on_scale_id", using: :btree
+  add_index "measures", ["unit_of_measurement_id"], name: "index_measures_on_unit_of_measurement_id", using: :btree
 
   create_table "metrics", force: :cascade do |t|
     t.string   "metric_name",        limit: 255
@@ -107,6 +112,13 @@ ActiveRecord::Schema.define(version: 20160518195707) do
     t.datetime "updated_at",                           null: false
   end
 
+  create_table "unit_of_measurements", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name",             limit: 255
     t.string   "last_name",              limit: 255
@@ -131,6 +143,8 @@ ActiveRecord::Schema.define(version: 20160518195707) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "goals", "projects"
+  add_foreign_key "measures", "scales"
+  add_foreign_key "measures", "unit_of_measurements"
   add_foreign_key "questions", "goals"
   add_foreign_key "scales", "number_sets"
   add_foreign_key "scales", "type_of_scales"
