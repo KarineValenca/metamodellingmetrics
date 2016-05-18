@@ -1,0 +1,2 @@
+module TypeOfScalesHelper
+end

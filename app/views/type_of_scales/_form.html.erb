@@ -1,0 +1,25 @@
+<%= form_for(@type_of_scale) do |f| %>
+  <% if @type_of_scale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@type_of_scale.errors.count, "error") %> prohibited this type_of_scale from being saved:</h2>
+
+      <ul>
+      <% @type_of_scale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name_type_scale %><br>
+    <%= f.text_field :name_type_scale %>
+  </div>
+  <div class="field">
+    <%= f.label :description_type_scale %><br>
+    <%= f.text_area :description_type_scale %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

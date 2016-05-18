@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :type_of_scales
   resources :scales
   resources :number_sets
   resources :measures
