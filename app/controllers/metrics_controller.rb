@@ -17,6 +17,7 @@ class MetricsController < ApplicationController
   def new
     @metric = Metric.new
     @question = Question.find(params[:question_ids])
+    @metric.measures.build
   end
 
   # GET /metrics/1/edit
@@ -29,7 +30,7 @@ class MetricsController < ApplicationController
     @metric = Metric.new(metric_params)
     @questions = Question.where(:id => [:questions_ids])
     @metric.questions << @questions
-    
+
     respond_to do |format|
       if @metric.save
         format.html { redirect_to @metric, notice: 'Metric was successfully created.' }
@@ -65,6 +66,22 @@ class MetricsController < ApplicationController
     end
   end
 
+  def calculate_metric_value(measure1, measure2, operator)
+    case operator
+    when ('Adição')
+      return measure1 + measure2
+    when ('Subtração')
+      return measure1 - measure2
+    when ('Multiplicação')
+      return measure1 * measure2
+    when ('Divisão')
+      return measure1 / measure2
+    else
+      render new
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_metric
@@ -74,6 +91,8 @@ class MetricsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def metric_params
       params.require(:metric).permit(:metric_name, :description_metric, :calculus_date,
-        :question_ids)
+        :question_ids, measures_attributes: [:measures, :name_measure, :description_measure,
+          :date_measure, :value_measure, :scale_id, :unit_of_measurement_id])
     end
+
 end

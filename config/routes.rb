@@ -28,6 +28,10 @@ Rails.application.routes.draw do
     resources :questions
   end
   
+  resources :metrics do
+    resources :measures
+  end
+  
   resources :users
 
   get 'projects/new'

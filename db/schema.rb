@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160519235812) do
     t.string   "metric_name",        limit: 255
     t.text     "description_metric", limit: 65535
     t.date     "calculus_date"
+    t.float    "metric_result",      limit: 24
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end

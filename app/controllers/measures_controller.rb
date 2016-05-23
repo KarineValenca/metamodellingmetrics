@@ -28,8 +28,7 @@ class MeasuresController < ApplicationController
 
     respond_to do |format|
       if @measure.save
-        format.html { redirect_to @measure, notice: 'Measure was successfully created.' }
-        format.json { render :show, status: :created, location: @measure }
+        render :nothing => true
       else
         format.html { render :new }
         format.json { render json: @measure.errors, status: :unprocessable_entity }
