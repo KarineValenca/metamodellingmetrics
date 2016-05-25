@@ -12,49 +12,28 @@
   <% end %>
 
   <%= f.hidden_field :question_ids, :value => @question.id %>
-
-  <div class="field">
-    <%= f.label :metric_name %><br>
-    <%= f.text_field :metric_name %>
-  </div>
-  <div class="field">
-    <%= f.label :description_metric %><br>
-    <%= f.text_area :description_metric %>
-  </div>
-
-  <button id="Nova medida" type="button">Adicionar Nova Medida</button>
-  <%= f.fields_for :measures, @measures do |h| %>
-
-  <div class="field">
-    <%= h.label :name_measure %><br>
-    <%= h.text_field :name_measure %>
-  </div>
-  <div class="field">
-    <%= h.label :description_measure %><br>
-    <%= h.text_area :description_measure %>
-  </div>
-  <div class="field">
-    <%= h.label :date_measure %><br>
-    <%= h.date_select :date_measure %>
-  </div>
-  <div class="field">
-    <%= h.label :value_measure %><br>
-    <%= h.text_field :value_measure %>
-  </div>
-  <div class="field">
-    <%= h.label "Escala"%><br>
-    <%= h.select :scale_id, Scale.all.collect {|scale| [scale.name_scale, scale.id]} %>
-  </div>
-  <div class="field">
-    <%= h.label "Unidade de Medida"%><br>
-    <%= h.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
-  </div>
-  <button id="submit_button">Criar</button>
-<% end %>
+  
+    <div class="field">
+      <%= f.label :metric_name %><br>
+      <%= f.text_field :metric_name %>
+    </div>
+    <div class="field">
+      <%= f.label :description_metric %><br>
+      <%= f.text_area :description_metric %>
+    </div>
  <!-- <div class="field">
     <%= f.label :calculus_date %><br>
     <%= f.date_select :calculus_date %>
   </div>-->
+    <%= f.label "Medida 1"%><br>
+    <%= f.select :measure_ids, Measure.all.collect {|measure| [measure.name_measure, measure.id]} %>
+
+     <%= f.label "Operador"%><br>
+    <%= f.select :operator_id, Operator.all.collect {|operator| [operator.name, operator.id]} %>
+
+    <%= f.label "Medida 2"%><br>
+    <%= f.select :measure_ids, Measure.all.collect {|measure| [measure.name_measure, measure.id]} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

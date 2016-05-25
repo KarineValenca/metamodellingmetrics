@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519235812) do
+ActiveRecord::Schema.define(version: 20160525192022) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name_company",        limit: 255
@@ -56,7 +56,10 @@ ActiveRecord::Schema.define(version: 20160519235812) do
     t.float    "metric_result",      limit: 24
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.integer  "operator_id",        limit: 4
   end
+
+  add_index "metrics", ["operator_id"], name: "index_metrics_on_operator_id", using: :btree
 
   create_table "metrics_questions", id: false, force: :cascade do |t|
     t.integer "metric_id",   limit: 4
@@ -157,6 +160,7 @@ ActiveRecord::Schema.define(version: 20160519235812) do
   add_foreign_key "goals", "projects"
   add_foreign_key "measures", "scales"
   add_foreign_key "measures", "unit_of_measurements"
+  add_foreign_key "metrics", "operators"
   add_foreign_key "questions", "goals"
   add_foreign_key "scales", "number_sets"
   add_foreign_key "scales", "type_of_scales"
