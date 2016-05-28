@@ -32,7 +32,7 @@
     <%= f.select :operator_id, Operator.all.collect {|operator| [operator.name, operator.id]} %>
 
     <%= f.label "Medida 2"%><br>
-    <%= f.select :measure_ids, Measure.all.collect {|measure| [measure.name_measure, measure.id]} %>
+    <%= f.select :measure_ids, Measure.all.collect {|measure2| [measure.name_measure, measure.id]} %>
   </div>
   <div class="actions">
     <%= f.submit %>
