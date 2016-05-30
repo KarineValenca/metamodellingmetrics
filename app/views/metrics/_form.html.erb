@@ -25,14 +25,22 @@
     <%= f.label :calculus_date %><br>
     <%= f.date_select :calculus_date %>
   </div>-->
-    <%= f.label "Medida 1"%><br>
-    <%= f.select :measure_ids, Measure.all.collect {|measure| [measure.name_measure, measure.id]} %>
-
-     <%= f.label "Operador"%><br>
+  <%= f.label "Operador"%><br>
     <%= f.select :operator_id, Operator.all.collect {|operator| [operator.name, operator.id]} %>
 
-    <%= f.label "Medida 2"%><br>
-    <%= f.select :measure_ids, Measure.all.collect {|measure2| [measure.name_measure, measure.id]} %>
+  <h2>Insira o valor das medidas</h2>
+  <%= f.fields_for :measures do |measure| %>
+    <div class = "measure_fields">
+      <%= measure.label :name_measure %><br>
+      <%= measure.text_field :name_measure %> <br>
+      <%= measure.label :description_measure %><br>
+      <%= measure.text_area :description_measure %> <br>
+      <%= measure.label :date_measure %> <br>
+      <%= measure.date_select :date_measure %><br>
+      <%= measure.label :value_measure%> <br>
+      <%= measure.text_field :value_measure%> <br>
+    </div>
+  <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

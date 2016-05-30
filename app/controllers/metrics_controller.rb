@@ -31,13 +31,7 @@ class MetricsController < ApplicationController
     @questions = Question.where(:id => [:questions_ids])
     @metric.questions << @questions
 
-    @measures = Measure.where(:id => "measure")
-    @measures2 = Measure.where(:id => "measure2")
-
-    puts "DOIDOIDOIDODI #{@measures.value_measure}"
-    @metric.measures << @measures
-    @metric.measures << @measures2
-
+=begin
     case @metric.operator.name
     when ('Adição')
       @metric.metric_result = @metric.measures.first.value_measure 
@@ -50,7 +44,7 @@ class MetricsController < ApplicationController
     else
       render new
     end
-
+=end
     respond_to do |format|
       
       if @metric.save
@@ -101,8 +95,8 @@ class MetricsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def metric_params
       params.require(:metric).permit(:metric_name, :description_metric, :calculus_date,
-        :question_ids, :operator_id, :measure_ids, :measure2, measures_attributes: [:measures, :name_measure, 
-          :description_measure, :date_measure, :value_measure, :scale_id, :unit_of_measurement_id])
+        :question_ids, :operator_id, measures_attributes: [:id, :name_measure, 
+          :description_measure, :date_measure, :value_measure])
     end
 
     def calculate_metric_value(measure1, operator)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525192022) do
+ActiveRecord::Schema.define(version: 20160530162052) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name_company",        limit: 255
@@ -39,15 +39,12 @@ ActiveRecord::Schema.define(version: 20160525192022) do
     t.datetime "updated_at",                           null: false
     t.integer  "scale_id",               limit: 4
     t.integer  "unit_of_measurement_id", limit: 4
+    t.integer  "metric_id",              limit: 4
   end
 
+  add_index "measures", ["metric_id"], name: "index_measures_on_metric_id", using: :btree
   add_index "measures", ["scale_id"], name: "index_measures_on_scale_id", using: :btree
   add_index "measures", ["unit_of_measurement_id"], name: "index_measures_on_unit_of_measurement_id", using: :btree
-
-  create_table "measures_metrics", id: false, force: :cascade do |t|
-    t.integer "metric_id",  limit: 4, null: false
-    t.integer "measure_id", limit: 4, null: false
-  end
 
   create_table "metrics", force: :cascade do |t|
     t.string   "metric_name",        limit: 255
@@ -158,6 +155,7 @@ ActiveRecord::Schema.define(version: 20160525192022) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "goals", "projects"
+  add_foreign_key "measures", "metrics"
   add_foreign_key "measures", "scales"
   add_foreign_key "measures", "unit_of_measurements"
   add_foreign_key "metrics", "operators"
