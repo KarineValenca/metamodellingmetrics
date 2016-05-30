@@ -1,0 +1,28 @@
+<div class="nested-fields">
+
+  <div class="field">
+    <%= f.label :name_measure %><br>
+    <%= f.text_field :name_measure %>
+  </div>
+  <div class="field">
+    <%= f.label :description_measure %><br>
+    <%= f.text_area :description_measure %>
+  </div>
+  <div class="field">
+    <%= f.label :date_measure %><br>
+    <%= f.date_select :date_measure %>
+  </div>
+  <div class="field">
+    <%= f.label :value_measure %><br>
+    <%= f.text_field :value_measure %>
+  </div>
+  <div class="field">
+    <%= f.label "Escala"%><br>
+    <%= f.select :scale_id, Scale.all.collect {|scale| [scale.name_scale, scale.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label "Unidade de Medida"%><br>
+    <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
+  </div>
+
+</div>
