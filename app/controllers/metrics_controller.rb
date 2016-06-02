@@ -95,19 +95,21 @@ class MetricsController < ApplicationController
         value_measure1 = @measures[0].value_measure
         puts "LEGAL LEGAL LEGAL #{value_measure1}"
         value_measure2 = @measures[1].value_measure
-        @metric.metric_result = @value_measure1 + value_measure2
+        @metric.metric_result = value_measure1 + value_measure2
+        puts "DOIDO DOIDO #{@metric.metric_result}"
+        @metric.save
       when (2)
-        @value_measure1 = @measures[0].value_measure
-        @value_measure2 = @measures[1].value_measure
-        return @metric.metric_result = @value_measure1 + @value_measure2
+        value_measure1 = @measures[0].value_measure
+        value_measure2 = @measures[1].value_measure
+        return @metric.metric_result = value_measure1 + value_measure2
       when (3)
-        @value_measure1 = @measures[0].value_measure
-        @value_measure2 = @measures[1].value_measure
-        return @metric.metric_result = @value_measure1 + @value_measure2
+        value_measure1 = @measures[0].value_measure
+        value_measure2 = @measures[1].value_measure
+        return @metric.metric_result = value_measure1 + value_measure2
       when (4)
-        @value_measure1 = @measures[0].value_measure
-        @value_measure2 = @measures[1].value_measure
-        return @metric.metric_result = @value_measure1 + @value_measure2
+        value_measure1 = @measures[0].value_measure
+        value_measure2 = @measures[1].value_measure
+        return @metric.metric_result = value_measure1 + value_measure2
       else
         render new
       end
