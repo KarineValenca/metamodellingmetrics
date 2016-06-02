@@ -30,27 +30,12 @@ class MetricsController < ApplicationController
     @metric = Metric.new(metric_params)
     @questions = Question.where(:id => [:questions_ids])
     @metric.questions << @questions
-
-=begin
-    case @metric.operator.name
-    when ('Adição')
-      @metric.metric_result = @metric.measures.first.value_measure 
-    when ('Subtração')
-      @metric.metric_result = @metric.measures.first.value_measure
-    when ('Multiplicação')
-       @metric.metric_result = @metric.measures.first.value_measure
-    when ('Divisão')
-       @metric.metric_result = @metric.measures.first.value_measure
-    else
-      render new
-    end
-=end
     respond_to do |format|
-      
       if @metric.save
-       
+        @test = calculate_metric_value(@metric.id)
         format.html { redirect_to @metric, notice: 'Metric was successfully created.' }
         format.json { render :show, status: :created, location: @metric }
+       
       else
         format.html { render :new }
         format.json { render json: @metric.errors, status: :unprocessable_entity }
@@ -82,8 +67,6 @@ class MetricsController < ApplicationController
     end
   end
 
-  
-
   end
 
   private
@@ -99,18 +82,33 @@ class MetricsController < ApplicationController
           :description_measure, :date_measure, :value_measure, :scale_id, :unit_of_measurement_id])
     end
 
-    def calculate_metric_value(measure1, operator)
-    case operator
-    when ('Adição')
-      return measure1 
-    when ('Subtração')
-      return measure1
-    when ('Multiplicação')
-      return measure1
-    when ('Divisão')
-      return measure1
-    else
-      render new
-    end
+    def calculate_metric_value(metric_id)
+      puts "PRIMEIRO DOIDO #{metric_id}"
 
+      
+      @metric = Metric.find(metric_id)
+
+      puts "TEST TEST TEST #{@metric.metric_name}"
+      @measures = Measure.where(:metric_id => metric_id)
+      case @metric.operator_id
+      when (1)
+        value_measure1 = @measures[0].value_measure
+        puts "LEGAL LEGAL LEGAL #{value_measure1}"
+        value_measure2 = @measures[1].value_measure
+        @metric.metric_result = @value_measure1 + value_measure2
+      when (2)
+        @value_measure1 = @measures[0].value_measure
+        @value_measure2 = @measures[1].value_measure
+        return @metric.metric_result = @value_measure1 + @value_measure2
+      when (3)
+        @value_measure1 = @measures[0].value_measure
+        @value_measure2 = @measures[1].value_measure
+        return @metric.metric_result = @value_measure1 + @value_measure2
+      when (4)
+        @value_measure1 = @measures[0].value_measure
+        @value_measure2 = @measures[1].value_measure
+        return @metric.metric_result = @value_measure1 + @value_measure2
+      else
+        render new
+      end
 end
