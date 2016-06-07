@@ -1,16 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Nome da questão:</strong>
+  <strong>Question name:</strong>
   <%= @question.question_name %>
 </p>
 
 <p>
-  <strong>Descriçãp da questão:</strong>
+  <strong>Question description:</strong>
   <%= @question.question_description %>
 </p>
 
-<%= link_to 'Nova métrica', new_metric_path(:question_ids => @question.id) %>|
-<%= link_to 'Ver métricas dessa questão', metrics_path(:question_ids => @question.id) %> |
-<%= link_to 'Editar', edit_question_path(@question) %> |
-<%= link_to 'Voltar', questions_path %>
+<%= link_to 'New metric', new_metric_path(:question_ids => @question.id) %> |
+<%= link_to 'See question metrics', metrics_path(:question_ids => @question.id) %> |
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

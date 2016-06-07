@@ -21,14 +21,11 @@
       <%= f.label :description_metric %><br>
       <%= f.text_area :description_metric %>
     </div>
- <!-- <div class="field">
-    <%= f.label :calculus_date %><br>
-    <%= f.date_select :calculus_date %>
-  </div>-->
-  <%= f.label "Operador"%><br>
+
+  <%= f.label "Operator"%><br>
     <%= f.select :operator_id, Operator.all.collect {|operator| [operator.name, operator.id]} %>
 
-  <h2>Insira o valor das medidas</h2>
+  <h2>Insert measurement values</h2>
 
   <div id="measures">
     <%= f.fields_for :measures do |measure| %>

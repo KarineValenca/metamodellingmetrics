@@ -1,16 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Nome:</strong>
+  <strong>Goal name:</strong>
   <%= @goal.name %>
 </p>
 
 <p>
-  <strong>Descrição:</strong>
+  <strong>Description:</strong>
   <%= @goal.description %>
 </p>
 
-<%= link_to 'Nova questão', new_question_path(:goal => @goal.id) %>
-<%= link_to 'Ver questões desse objetivo', questions_path(:goal => @goal.id) %>
-<%= link_to 'Editar', edit_goal_path(@goal) %> |
-<%= link_to 'Voltar', goals_path %>
+<%= link_to 'New question', new_question_path(:goal => @goal.id) %>
+<%= link_to 'See goal questions', questions_path(:goal => @goal.id) %>
+<%= link_to 'Edit', edit_goal_path(@goal) %> |
+<%= link_to 'Back', goals_path %>

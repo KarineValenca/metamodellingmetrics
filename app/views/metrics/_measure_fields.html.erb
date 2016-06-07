@@ -17,11 +17,11 @@
     <%= f.text_field :value_measure %>
   </div>
   <div class="field">
-    <%= f.label "Escala"%><br>
+    <%= f.label "Scala"%><br>
     <%= f.select :scale_id, Scale.all.collect {|scale| [scale.name_scale, scale.id]} %>
   </div>
   <div class="field">
-    <%= f.label "Unidade de Medida"%><br>
+    <%= f.label "Unit of measurement"%><br>
     <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
   </div>
 

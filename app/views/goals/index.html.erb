@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 
-<h1>Listando Objetivos</h1>
+<h1>Listing Goals</h1>
 <table>
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Descrição</th>
+      <th>Goal name</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,9 +17,9 @@
 
         <td><%= goal.name %></td>
         <td><%= goal.description %></td>
-        <td><%= link_to 'Detalhes', goal %></td>
-        <td><%= link_to 'Editar', edit_project_goal_path(:id => goal.id, :project_id => @project.id) %></td>
-        <td><%= link_to 'Excluir', goal, method: :delete, data: { confirm: 'Você tem certeza' } %></td>
+        <td><%= link_to 'Details', goal %></td>
+        <td><%= link_to 'Edit', edit_project_goal_path(:id => goal.id, :project_id => @project.id) %></td>
+        <td><%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to 'Novo Objetivo', new_goal_path(:project => @project.id) %>
+<%= link_to 'New Goal', new_goal_path(:project => @project.id) %>
