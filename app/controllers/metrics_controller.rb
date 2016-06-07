@@ -92,24 +92,28 @@ class MetricsController < ApplicationController
       @measures = Measure.where(:metric_id => metric_id)
       case @metric.operator_id
       when (1)
-        value_measure1 = @measures[0].value_measure
-        puts "LEGAL LEGAL LEGAL #{value_measure1}"
-        value_measure2 = @measures[1].value_measure
-        @metric.metric_result = value_measure1 + value_measure2
-        puts "DOIDO DOIDO #{@metric.metric_result}"
+        @metric.metric_result = @measures[0].value_measure
         @metric.save
       when (2)
         value_measure1 = @measures[0].value_measure
         value_measure2 = @measures[1].value_measure
-        return @metric.metric_result = value_measure1 + value_measure2
+        @metric.metric_result = value_measure1 + value_measure2
+        @metric.save
       when (3)
         value_measure1 = @measures[0].value_measure
         value_measure2 = @measures[1].value_measure
-        return @metric.metric_result = value_measure1 + value_measure2
+        @metric.metric_result = value_measure1 - value_measure2
+        @metric.save
       when (4)
         value_measure1 = @measures[0].value_measure
         value_measure2 = @measures[1].value_measure
-        return @metric.metric_result = value_measure1 + value_measure2
+        @metric.metric_result = value_measure1 * value_measure2
+        @metric.save
+      when (5)
+        value_measure1 = @measures[0].value_measure
+        value_measure2 = @measures[1].value_measure
+        @metric.metric_result = value_measure1 / value_measure2
+        @metric.save
       else
         render new
       end
