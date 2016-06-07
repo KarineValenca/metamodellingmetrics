@@ -47,13 +47,14 @@ ActiveRecord::Schema.define(version: 20160530162052) do
   add_index "measures", ["unit_of_measurement_id"], name: "index_measures_on_unit_of_measurement_id", using: :btree
 
   create_table "metrics", force: :cascade do |t|
-    t.string   "metric_name",        limit: 255
-    t.text     "description_metric", limit: 65535
+    t.string   "metric_name",         limit: 255
+    t.text     "description_metric",  limit: 65535
     t.date     "calculus_date"
-    t.float    "metric_result",      limit: 24
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.integer  "operator_id",        limit: 4
+    t.float    "metric_result",       limit: 24
+    t.string   "unit_of_measurement", limit: 255
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "operator_id",         limit: 4
   end
 
   add_index "metrics", ["operator_id"], name: "index_metrics_on_operator_id", using: :btree

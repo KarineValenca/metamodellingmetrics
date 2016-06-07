@@ -5,7 +5,8 @@ class CreateMetrics < ActiveRecord::Migration
       t.text :description_metric
       t.date :calculus_date
 	  t.float :metric_result
-
+	  t.string :unit_of_measurement
+	  
       t.timestamps null: false
     end
   end

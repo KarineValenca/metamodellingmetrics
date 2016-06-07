@@ -30,6 +30,8 @@ class MetricsController < ApplicationController
     @metric = Metric.new(metric_params)
     @questions = Question.where(:id => [:questions_ids])
     @metric.questions << @questions
+    @metric.calculus_date = Date.parse(Time.now.to_s)
+
     respond_to do |format|
       if @metric.save
         @test = calculate_metric_value(@metric.id)
@@ -82,39 +84,36 @@ class MetricsController < ApplicationController
           :description_measure, :date_measure, :value_measure, :scale_id, :unit_of_measurement_id])
     end
 
-    def calculate_metric_value(metric_id)
-      puts "PRIMEIRO DOIDO #{metric_id}"
-
-      
+    def calculate_metric_value(metric_id)      
       @metric = Metric.find(metric_id)
-
-      puts "TEST TEST TEST #{@metric.metric_name}"
+      
+      @metric.unit_of_measurement = "#{@metric.measures[0].unit_of_measurement.name} / #{@metric.measures[1].unit_of_measurement.name}" 
       @measures = Measure.where(:metric_id => metric_id)
       case @metric.operator_id
-      when (1)
-        @metric.metric_result = @measures[0].value_measure
-        @metric.save
-      when (2)
-        value_measure1 = @measures[0].value_measure
-        value_measure2 = @measures[1].value_measure
-        @metric.metric_result = value_measure1 + value_measure2
-        @metric.save
-      when (3)
-        value_measure1 = @measures[0].value_measure
-        value_measure2 = @measures[1].value_measure
-        @metric.metric_result = value_measure1 - value_measure2
-        @metric.save
-      when (4)
-        value_measure1 = @measures[0].value_measure
-        value_measure2 = @measures[1].value_measure
-        @metric.metric_result = value_measure1 * value_measure2
-        @metric.save
-      when (5)
-        value_measure1 = @measures[0].value_measure
-        value_measure2 = @measures[1].value_measure
-        @metric.metric_result = value_measure1 / value_measure2
-        @metric.save
-      else
-        render new
+        when (1)
+          @metric.metric_result = @measures[0].value_measure
+          @metric.save
+        when (2)
+          value_measure1 = @measures[0].value_measure
+          value_measure2 = @measures[1].value_measure
+          @metric.metric_result = value_measure1 + value_measure2
+          @metric.save
+        when (3)
+          value_measure1 = @measures[0].value_measure
+          value_measure2 = @measures[1].value_measure
+          @metric.metric_result = value_measure1 - value_measure2
+          @metric.save
+        when (4)
+          value_measure1 = @measures[0].value_measure
+          value_measure2 = @measures[1].value_measure
+          @metric.metric_result = value_measure1 * value_measure2
+          @metric.save
+        when (5)
+          value_measure1 = @measures[0].value_measure
+          value_measure2 = @measures[1].value_measure
+          @metric.metric_result = value_measure1 / value_measure2
+          @metric.save
+        else
+          render new
       end
 end

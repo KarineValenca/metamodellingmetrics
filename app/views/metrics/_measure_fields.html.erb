@@ -18,11 +18,13 @@
   </div>
   <div class="field">
     <%= f.label "Scala"%><br>
-    <%= f.select :scale_id, Scale.all.collect {|scale| [scale.name_scale, scale.id]} %>
+    <%= f.select :scale_id, Scale.all.collect {|scale| [scale.name_scale, scale.id]}, :include_blank => true %>
+    <%= link_to 'New scale', new_scale_path %>
   </div>
   <div class="field">
     <%= f.label "Unit of measurement"%><br>
-    <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]} %>
+    <%= f.select :unit_of_measurement_id, UnitOfMeasurement.all.collect {|unit_of_measurement| [unit_of_measurement.name, unit_of_measurement.id]}, :include_blank => true %>
+    <%= link_to 'New unit of measurement', new_unit_of_measurement_path %>
   </div>
 
 </div>
