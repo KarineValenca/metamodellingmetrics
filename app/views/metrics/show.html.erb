@@ -17,13 +17,9 @@
 
 <p>
   <strong>Metric value:</strong>
-  <%= @metric.metric_result %>
+  <%= @metric.metric_result %> <%= @metric.unit_of_measurement %>
 </p>
 
-<p>
-	<strong> TESTE </strong>
-	
-	<%= @metric.measures[0].unit_of_measurement.name %> / <%= @metric.measures[1].unit_of_measurement.name %>
 </p>
 <%= link_to 'Edit', edit_metric_path(@metric) %> |
 <%= link_to 'Back', metrics_path %>

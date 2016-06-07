@@ -87,7 +87,7 @@ class MetricsController < ApplicationController
     def calculate_metric_value(metric_id)      
       @metric = Metric.find(metric_id)
       
-      @metric.unit_of_measurement = "#{@metric.measures[0].unit_of_measurement.name} / #{@metric.measures[1].unit_of_measurement.name}" 
+       
       @measures = Measure.where(:metric_id => metric_id)
       case @metric.operator_id
         when (1)
@@ -97,21 +97,25 @@ class MetricsController < ApplicationController
           value_measure1 = @measures[0].value_measure
           value_measure2 = @measures[1].value_measure
           @metric.metric_result = value_measure1 + value_measure2
+          @metric.unit_of_measurement = "#{@metric.measures[0].unit_of_measurement.name}"
           @metric.save
         when (3)
           value_measure1 = @measures[0].value_measure
           value_measure2 = @measures[1].value_measure
           @metric.metric_result = value_measure1 - value_measure2
+          @metric.unit_of_measurement = "#{@metric.measures[0].unit_of_measurement.name}"
           @metric.save
         when (4)
           value_measure1 = @measures[0].value_measure
           value_measure2 = @measures[1].value_measure
           @metric.metric_result = value_measure1 * value_measure2
+          @metric.unit_of_measurement = "#{@metric.measures[0].unit_of_measurement.name} * #{@metric.measures[1].unit_of_measurement.name}"
           @metric.save
         when (5)
           value_measure1 = @measures[0].value_measure
           value_measure2 = @measures[1].value_measure
           @metric.metric_result = value_measure1 / value_measure2
+          @metric.unit_of_measurement = "#{@metric.measures[0].unit_of_measurement.name} / #{@metric.measures[1].unit_of_measurement.name}"
           @metric.save
         else
           render new
