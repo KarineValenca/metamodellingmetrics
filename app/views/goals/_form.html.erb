@@ -12,14 +12,29 @@
   <% end %>
 
   <%= f.hidden_field :project_id, :value => @project.id %>
-   
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label "Analyze" %><br>
+    <%= f.text_field :analyze %>
+  </div>
+  <div class="field">
+    <%= f.label "For the purpose of" %><br>
+    <%= f.text_area :purpose %>
+  </div>
+  <div class="field">
+    <%= f.label "With respect to " %><br>
+    <%= f.text_field :respect %>
+  </div>
+  <div class="field">
+    <%= f.label "From the pointview of" %><br>
+    <%= f.text_area :pointview %>
+  </div>
+  <div class="field">
+    <%= f.label "In the context of" %><br>
+    <%= f.text_area :context %>
   </div>
   <div class="actions">
     <%= f.submit %>

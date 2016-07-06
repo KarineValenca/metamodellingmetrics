@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20160530162052) do
   create_table "goals", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
+    t.text     "analyze",     limit: 65535
+    t.text     "purpose",     limit: 65535
+    t.text     "respect",     limit: 65535
+    t.text     "pointview",   limit: 65535
+    t.text     "context",     limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "project_id",  limit: 4
